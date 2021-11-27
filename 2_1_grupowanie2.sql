@@ -43,12 +43,12 @@ GROUP BY member_no
 
 --------------------------------------------------------------------------------------------
 -- 1. Na jak długo średnio są aktualnie wypożyczane książki
-SELECT AVG(DATEDIFF(day ,out_date,in_date))
-FROM loanhist
+SELECT AVG(DATEDIFF(day ,out_date,GETDATE()))
+FROM loan
 
 -- 2. Na jak długo średnio są aktualnie wypożyczane poszczególne tytuły
-SELECT title_no, AVG(DATEDIFF(day ,out_date,in_date))
-FROM loanhist
+SELECT title_no, AVG(DATEDIFF(day ,out_date,GETDATE()))
+FROM loan
 GROUP BY title_no
 ORDER BY 1
 
